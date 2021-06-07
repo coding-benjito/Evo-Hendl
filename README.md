@@ -2,23 +2,27 @@
 
 > Submission to the [Minecraft Open-Endedness Challenge](https://evocraft.life/) ([GECCO 2021](https://gecco-2021.sigevo.org))
 
-This project was done as a **spare-time project**, as I found it very interesting to think about evolution in a synthetic fashion instead of the more common analytical/statistical view point of analysis of the process. Unfortunately I have only a very limited time available. One can see this as my first exploration of this so-called *a-life* field. I have to say, this process let many interesting thoughts and problems of this synthetic viewpoint arise, sort of reminiscent of this typical "was-there-first-the-hen-or-the-egg" sort of headache.
+This project was done as a **spare-time project**, as I found it very interesting to think about evolution in a synthetic fashion instead of the more common analytical/statistical view point of analysis of the process. Unfortunately, I have only a very limited time available. One can see this as my first exploration of this so-called *a-life* field. I have to say, this process let many interesting thoughts and problems of this synthetic viewpoint arise, sort of reminiscent of this typical "was-there-first-the-hen-or-the-egg" sort of headache.
 
-Here, I am providing my submission for the \textit{Minecraft Open-Endedness Challenge} (\url{https://evocraft.life/}) which is the first open-ended evolution challenge posed in the \textit{The Genetic and Evolutionary Computation Conference} 2021 (GECCO 2021) conference competition track.
+Here, I am providing my submission for the [Minecraft Open-Endedness Challenge](https://evocraft.life/) which is the first open-ended evolution challenge posed in the *The Genetic and Evolutionary Computation Conference* 2021 (GECCO 2021) conference competition track.
 
 The submission deadline is ~~June 1st~~ June 7th, 2021. The winners are announced during GECCO 2021 (The Genetic and Evolutionary Computation Conference) on July 10th, 2021.
 
 ## Short algorithm description
 
-This algorithm is based on using a single block as the unit of evolution/selection, and it includes mutational, recombinational (conversion) and reproduction. The genets are embedded in a so called bauplan (a wanted neighborhood), but can be rather easily exchanged with other modes, e.g., neutral nets.
+This algorithm is based on using a single block as the unit of evolution/selection, and it includes mutational, recombinational (conversion) and reproduction. The genetics are embedded in a so called *bauplan* (a wanted neighborhood), but can be rather easily exchanged with other modes, e.g., neural nets for more environmental feedback, etc.
+
+The algorithm includes competition, firstly because living cubes are removed given resources below a threshold in the occupied cube (energy homoeostasis), and secondly they cannot recreate offspring of a particular type if this given type is not available locally.
 
 ## What makes this algorithm special?
 
-Differently, to what I have seen to be commonly done, I do not build single relicts which are sort of the unit of evolution, but every single cube is a unit of selection and interacts with others in the neighborhood, i.e., there is also competition for resources implemented.
+Differently, to what I have seen to be commonly done, I do not build single relicts which are sort of the unit of evolution, but every single block is a unit of selection and interacts with others in the neighborhood, i.e., there is also competition for resources implemented.
 
-I hope, I have sufficiently documented the code for the interested reader, and below is some more info. I will try to improve this readings and code if I have any time soon. But anyways, the current code is functional, but I agree that *much interesting analysis can be done*, i.e., tracking a tree of inheritance for bauplans, etc. and playing with parameters (more air, etc. to see movements of 'artifacts').
+The code is functional.
 
-**Also remember, that in this repo are two videos of this running algorithm** They are both part of a single evolutionary replicate (at beginning: part 1 and then part 2). You only need basic libraries, including numpy and the API provided by Evocraft-PY.
+Following work could be tracking a tree of inheritance for bauplans, etc. and playing with parameters (more air, etc. to see movements of 'artifacts').
+
+**Also remember, that in this repo are two videos of this running algorithm** They are both part of a single evolutionary replicate (at beginning: part 1 and then part 2). You only need basic libraries, including numpy and the API provided by Evocraft-py.
 
 **Thanks to the organizers and API-providers, etc. See the citation at the bottom**
 
@@ -33,14 +37,13 @@ As also described there, you require (including UNIX-commands):
 3. [grpc](https://grpc.io/): `pip install grpcio`
 
 Rendering (*Java Edition* in UNIX):
-Launch the *Minecraft Launcher*. Click *Installations*. Click *New installation*. Impute a name of your choice, **select version 1.12.2** and hit *Create*. After that, launch this version *1.12.2*, hit *Multiplayer*, *Direct Connect*, enter *localhost* as a *Server Address**, hit *Join Server*. You are now in the game as a *mob* and could freely move wiht `W`, `A`, `S`, `D`, `SPACE`, but caveat, as you interact with environment. Just hit `ESC` to pause the game, transition to the terminal (where your Minecraft server is running) to place some command (see below) and then hit *Back to Game* to see what is happening.
+Launch the *Minecraft Launcher*. Click *Installations*. Click *New installation*. Impute a name of your choice, **select version 1.12.2** and hit *Create*. After that, launch this version *1.12.2*, hit *Multiplayer*, *Direct Connect*, enter *localhost* as a *Server Address*, hit *Join Server*. You are now in the game as a *mob* and could freely move wiht `W`, `A`, `S`, `D`, `SPACE`, but caveat, as you interact with environment. Just hit `ESC` to pause the game, transition to the terminal (where your Minecraft server is running) to place some command (see below) and then hit *Back to Game* to see what is happening.
 Commands:
 1. Teleport yourself (the *mob*) via `/tp @p x y z` to position (x, y, z), e.g., try `/tp @p 1 1 1`. You will be in a corner (around you is `DIRT` and `GRASS` showing you the end of the accessible environment.
 2. Introduce daylight `time set day`.
 3. Remove day-night cycle `gamerule doDaylightCycle false`.
 4. Go in creative mode `defaultgamemode creative`.
 5. `/weather clear 1000000` for 1e6 ticks it is clear (max)
-6. 
 
 On top of that, my submission requires:
 - numpy
@@ -53,7 +56,7 @@ On top of that, my submission requires:
 
 ## Purpose
 
-The purpose of this competition is to create an algorithm which creates novel and increasingly complex \textit{Minecraft builds} (artefacts) in an \textit{open-ended evolution} fashion in a \textit{Minecraft} environment using the \textit{EvoCraft API} [Grbic et al. (2020)](https://arxiv.org/abs/2012.04751) which allows programmatic manipulation of blocks in a running \textit{Minecraft server}. Accordingly, the \textit{Minecraft world} is the used alife world, e.g., just like Tierra, Avida, Polyworld, Geb, Division Blocks and Evosphere, that can be assessed with Mark Bedau's \textit{activity statistics} as a measure of \textit{open-endedness}.
+The purpose of this competition is to create an algorithm which creates novel and increasingly complex *Minecraft builds* (artefacts) in an *open-ended evolution* fashion in a *Minecraft* environment using the *EvoCraft API* [Grbic et al. (2020)](https://arxiv.org/abs/2012.04751) which allows programmatic manipulation of blocks in a running *Minecraft server*. Accordingly, the *Minecraft world* is the used alife world, e.g., just like Tierra, Avida, Polyworld, Geb, Division Blocks and Evosphere, that can be assessed with Mark Bedau's *activity statistics* as a measure of *open-endedness*.
 
 The simulation runs in *Minecraft* which is a voxel-based environment.
 
@@ -128,7 +131,7 @@ blocks = client.readCube(Cube(
 
 The environment is voxel-based, i.e., composed out of discrete 1 x 1 x 1 cubes which span this discrete 3D world (limited to `Overworld`).
 
-The environment's acessible three dimensional volume extends vetically (gravitation) from the *Void* (y=0) up to the *build limit* (y=256). In the horizontal plane (x, z) the environment extends infinitely.
+The environment's acessible three dimensional volume extends vertically (gravitation) from the *Void* (y=0) up to the *build limit* (y=256). In the horizontal plane (x, z) the environment extends infinitely.
 
 At the start start-up, the plane (x, y=0, z) (*Floor*, y=0) is occupied by blocks of block type `BEDROCK` which is *indestructible* and prevents gravitation from pulling entities into the *Void*. `BEDROCK` does not alter its position, i.e., it cannot be pushed/pulled by piston types. I will keep this natural fixed *earth crust* in the simulations as a flat earth surface which linearly attracts (gravitation, constant across x, y, z).
 
