@@ -1,10 +1,26 @@
-# Hendl
+# Evo-Hendl
 
 > Submission to the [Minecraft Open-Endedness Challenge](https://evocraft.life/) ([GECCO 2021](https://gecco-2021.sigevo.org))
+
+This project was done as a **spare-time project**, as I found it very interesting to think about evolution in a synthetic fashion instead of the more common analytical/statistical view point of analysis of the process. Unfortunately I have only a very limited time available. One can see this as my first exploration of this so-called *a-life* field. I have to say, this process let many interesting thoughts and problems of this synthetic viewpoint arise, sort of reminiscent of this typical "was-there-first-the-hen-or-the-egg" sort of headache.
 
 Here, I am providing my submission for the \textit{Minecraft Open-Endedness Challenge} (\url{https://evocraft.life/}) which is the first open-ended evolution challenge posed in the \textit{The Genetic and Evolutionary Computation Conference} 2021 (GECCO 2021) conference competition track.
 
 The submission deadline is ~~June 1st~~ June 7th, 2021. The winners are announced during GECCO 2021 (The Genetic and Evolutionary Computation Conference) on July 10th, 2021.
+
+## Short algorithm description
+
+This algorithm is based on using a single block as the unit of evolution/selection, and it includes mutational, recombinational (conversion) and reproduction. The genets are embedded in a so called bauplan (a wanted neighborhood), but can be rather easily exchanged with other modes, e.g., neutral nets.
+
+## What makes this algorithm special?
+
+Differently, to what I have seen to be commonly done, I do not build single relicts which are sort of the unit of evolution, but every single cube is a unit of selection and interacts with others in the neighborhood, i.e., there is also competition for resources implemented.
+
+I hope, I have sufficiently documented the code for the interested reader, and below is some more info. I will try to improve this readings and code if I have any time soon. But anyways, the current code is functional, but I agree that *much interesting analysis can be done*, i.e., tracking a tree of inheritance for bauplans, etc. and playing with parameters (more air, etc. to see movements of 'artifacts').
+
+**Also remember, that in this repo are two videos of this running algorithm** They are both part of a single evolutionary replicate (at beginning: part 1 and then part 2). You only need basic libraries, including numpy and the API provided by Evocraft-PY.
+
+**Thanks to the organizers and API-providers, etc. See the citation at the bottom**
 
 ## Getting started
 
